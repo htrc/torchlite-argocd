@@ -12,7 +12,7 @@ spec:
     path: torchlite-backend/dev
   destination: 
     server: https://kubernetes.default.svc
-    namespace: torchlite
+    namespace: torchlite-dev
 
   syncPolicy:
     syncOptions:
