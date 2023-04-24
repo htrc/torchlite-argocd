@@ -11,7 +11,7 @@ jobs:
     - name: Update image version
       uses: mikefarah/yq@v4
       with:
-        cmd: yq eval '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' -i torchlite-backend/deployment.yaml
+        cmd: yq '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' -i torchlite-backend/deployment.yaml
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Apply image name changes
