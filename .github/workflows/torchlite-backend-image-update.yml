@@ -1,0 +1,17 @@
+name: Repository Dispatch
+
+on:
+  repository_dispatch:
+    types: [new-image]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Update image version
+      uses: mikefarah/yq@v4
+      with:
+        cmd: yq eval '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' -i torchlite-backend/deployment.yaml
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Apply image name changes

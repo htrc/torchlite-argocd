@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: torchlite-backend-app
+spec:
+  selector:
+    matchLabels:
+      app: torchlite-backend-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: torchlite-backend-app
+    spec:
+      containers:
+        - name: torchlite-backend-app
+          image: ghcr.io/htrc/torchlite-backend:latest
+          ports:
+            - containerPort: 8000
