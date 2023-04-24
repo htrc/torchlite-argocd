@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-dev
-          image: ghcr.io/htrc/torchlite-backend:develop-75c9e1f
+          image: ghcr.io/htrc/torchlite-backend:develop-f859cd1
           ports:
             - containerPort: 8000
       imagePullSecrets:
