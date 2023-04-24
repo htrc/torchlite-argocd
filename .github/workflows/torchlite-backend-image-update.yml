@@ -19,4 +19,4 @@ jobs:
         cmd: yq -i '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' torchlite-backend/deployment.yaml
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: Apply image name changes
+        commit_message: ${{ github.event.client_payload.commit_msg }}
