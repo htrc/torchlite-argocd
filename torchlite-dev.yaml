@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: torchlite-backend-argocd-app
+  name: torchlite-backend-dev-argocd-app
   namespace: argocd
 spec:
   project: default
@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/htrc/torchlite-argocd.git
     targetRevision: HEAD
-    path: torchlite-backend
+    path: torchlite-backend/dev
   destination: 
     server: https://kubernetes.default.svc
     namespace: torchlite

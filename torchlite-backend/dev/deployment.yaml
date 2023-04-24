@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: torchlite-backend-dev-deployment
+spec:
+  selector:
+    matchLabels:
+      app: torchlite-backend-dev-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: torchlite-backend-dev-app
+    spec:
+      containers:
+        - name: torchlite-backend-dev
+          image: ghcr.io/htrc/torchlite-backend:github-actions
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
