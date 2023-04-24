@@ -3,15 +3,20 @@ name: Repository Dispatch
 on:
   repository_dispatch:
     types: [new-image]
+
+permissions:
+  contents: read
+
 jobs:
   build:
+    name: Set new deployment image
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Update image version
       uses: mikefarah/yq@v4
       with:
-        cmd: yq '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' -i torchlite-backend/deployment.yaml
+        cmd: yq -i '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' torchlite-backend/deployment.yaml
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Apply image name changes
