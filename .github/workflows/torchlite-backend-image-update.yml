@@ -5,7 +5,7 @@ on:
     types: [new-image]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
