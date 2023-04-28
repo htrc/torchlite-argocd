@@ -17,5 +17,8 @@ spec:
           image: ghcr.io/htrc/torchlite-backend:github-actions
           ports:
             - containerPort: 8000
+          env:
+            - name: ENV
+              value: prod
       imagePullSecrets:
         - name: dockerconfigjson-github-com
