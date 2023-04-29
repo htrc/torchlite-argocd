@@ -8,7 +8,7 @@ metadata:
     cert-manager.io/cluster-issuer: buypass
 spec:
   rules:
-    - host: torchlite-prod-api.192.17.61.53.nip.io
+    - host: torchlite-api.htrc.illinois.edu
       http:
         paths:
           - path: /
@@ -20,5 +20,5 @@ spec:
                   number: 8000
   tls:
     - hosts:
-      - torchlite-prod-api.192.17.61.53.nip.io
+      - torchlite-api.htrc.illinois.edu
       secretName: torchlite-backend-prod-ingress-cert
