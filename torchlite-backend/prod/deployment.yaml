@@ -20,5 +20,7 @@ spec:
           env:
             - name: ENV
               value: prod
+            - name: TORCHLITE_CONFIG
+              value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/prod/config/config.yaml
       imagePullSecrets:
         - name: dockerconfigjson-github-com
