@@ -15,7 +15,6 @@ spec:
       containers:
         - name: torchlite-backend-prod-app
           image: ghcr.io/htrc/torchlite-backend:latest
-          imagePullPolicy: Always
           ports:
             - containerPort: 8000
           env:
