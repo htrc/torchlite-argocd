@@ -6,6 +6,13 @@ metadata:
     #kubernetes.io/ingress.class: public
     #nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "OPTIONS, GET, PUT, POST"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://torchlite.htrc.illinois.edu, https://torchlite-htrc.vercel.app"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-expose-headers: X-Torchlite-Version
+    nginx.ingress.kubernetes.io/cors-max-age: "86400"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
 spec:
   rules:
     - host: torchlite-api.htrc.illinois.edu
