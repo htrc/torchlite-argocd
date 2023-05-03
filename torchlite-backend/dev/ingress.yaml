@@ -6,9 +6,10 @@ metadata:
     #kubernetes.io/ingress.class: public
     #nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: buypass
-    nginx.ingress.kubernetes.io/cors-allow-headers: Content-Type
-    nginx.ingress.kubernetes.io/cors-allow-methods: "*"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "OPTIONS, GET, PUT, POST"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://torchlite-psi.vercel.app https://torchlite-htrc.vercel.app"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
     nginx.ingress.kubernetes.io/cors-expose-headers: X-Torchlite-Version
     nginx.ingress.kubernetes.io/cors-max-age: "86400"
     nginx.ingress.kubernetes.io/enable-cors: "true"
