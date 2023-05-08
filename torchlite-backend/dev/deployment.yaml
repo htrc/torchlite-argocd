@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: torchlite-backend-dev-app
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-dev
-          image: ghcr.io/htrc/torchlite-backend:develop-1830700
+          image: ghcr.io/htrc/torchlite-backend:develop-0cdfe98
           ports:
             - containerPort: 8000
           env:
