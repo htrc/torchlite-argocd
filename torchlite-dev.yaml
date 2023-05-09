@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.slack: torchlite
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: torchlite
 spec:
   project: default
 
