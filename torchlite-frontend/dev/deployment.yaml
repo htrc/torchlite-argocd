@@ -36,5 +36,7 @@ spec:
                 secretKeyRef:
                   name: nextauth-secret-key
                   key: nextauth-secret-key
+            - name: NEXT_PUBLIC_BASE_API_URI
+              value: https://torchlite-dev-api.192.17.61.53.nip.io
       imagePullSecrets:
         - name: dockerconfigjson-github-com
