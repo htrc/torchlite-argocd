@@ -4,7 +4,7 @@ metadata:
   name: torchlite-frontend-dev-service
 spec:
   selector:
-    app: torchlite-frontenv-dev-app
+    app: torchlite-frontend-dev-app
   ports:
     - port: 3000
       protocol: TCP
