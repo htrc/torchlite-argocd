@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: torchlite-frontend-dev-ingress
+  annotations:
+    #kubernetes.io/ingress.class: public
+    #nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: buypass
+spec:
+  rules:
+    - host: torchlite-dev.192.17.61.53.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: torchlite-frontend-dev-service
+                port:
+                  number: 3000
+  tls:
+    - hosts:
+      - torchlite-dev.192.17.61.53.nip.io
+      secretName: torchlite-frontend-dev-ingress-cert

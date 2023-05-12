@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: torchlite-frontend-dev-deployment
+spec:
+  selector:
+    matchLabels:
+      app: torchlite-frontend-dev-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: torchlite-frontend-dev-app
+    spec:
+      containers:
+        - name: torchlite-frontend-dev
+          image: ghcr.io/htrc/torchlite-frontend:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: ENV
+              value: dev
+            - name: NODE_ENV
+              value: development
+            - name: JWT_TIMEOUT
+              value: 86400
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: jwt-secret
+            - name: NEXTAUTH_URL
+              value: https://torchlite-dev.192.17.61.53.nip.io
+            - name: NEXTAUTH_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: nextauth-secret-key
+                  key: nextauth-secret-key
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com

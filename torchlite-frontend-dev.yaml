@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: torchlite-frontend-dev-argocd-app
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.slack: torchlite
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: torchlite
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/htrc/torchlite-argocd.git
+    targetRevision: HEAD
+    path: torchlite-frontend/dev
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: torchlite-dev
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
