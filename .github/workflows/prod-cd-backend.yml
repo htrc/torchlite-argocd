@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   build:
-    name: Set prod deployment image
+    name: Set prod backend deployment image
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
