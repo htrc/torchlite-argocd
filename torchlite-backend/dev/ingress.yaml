@@ -8,7 +8,7 @@ metadata:
     cert-manager.io/cluster-issuer: buypass
     nginx.ingress.kubernetes.io/cors-allow-headers: "*"
     nginx.ingress.kubernetes.io/cors-allow-methods: "OPTIONS, GET, PUT, POST"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "https://torchlite-dev.192.17.61.53.nip.io, https://torchlite-psi.vercel.app, https://torchlite-htrc.vercel.app, http://localhost:8081"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://torchlite-dev.192.17.61.53.nip.io, https://torchlite-*.vercel.app, http://localhost:8081"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
     nginx.ingress.kubernetes.io/cors-expose-headers: X-Torchlite-Version
     nginx.ingress.kubernetes.io/cors-max-age: "86400"
