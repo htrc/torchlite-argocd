@@ -23,7 +23,7 @@ spec:
             - name: NODE_ENV
               value: production
             - name: JWT_TIMEOUT
-              value: 86400
+              value: '86400'
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
