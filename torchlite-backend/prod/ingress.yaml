@@ -6,13 +6,43 @@ metadata:
     #kubernetes.io/ingress.class: public
     #nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/cors-allow-headers: "*"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "OPTIONS, GET, PUT, POST"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "https://torchlite.htrc.illinois.edu, https://torchlite-htrc.vercel.app"
-    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-    nginx.ingress.kubernetes.io/cors-expose-headers: X-Torchlite-Version
-    nginx.ingress.kubernetes.io/cors-max-age: "86400"
-    nginx.ingress.kubernetes.io/enable-cors: "true"
+    # nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+    # nginx.ingress.kubernetes.io/cors-allow-methods: "OPTIONS, GET, PUT, POST"
+    # nginx.ingress.kubernetes.io/cors-allow-origin: "https://torchlite.htrc.illinois.edu, https://torchlite-htrc.vercel.app"
+    # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    # nginx.ingress.kubernetes.io/cors-expose-headers: X-Torchlite-Version
+    # nginx.ingress.kubernetes.io/cors-max-age: "86400"
+    # nginx.ingress.kubernetes.io/enable-cors: "true"
+
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($http_origin = "https://torchlite.htrc.illinois.edu") {
+          set $cors "true";
+      }
+      if ($http_origin ~* ^https://torchlite-[^.]*htrc\.vercel\.app$) {
+          set $cors "true";
+      }
+
+      # Nginx doesn't support nested If statements - this is where things get slightly nasty.
+
+      if ($request_method = 'OPTIONS') {
+          set $corspreflight "${cors}options";
+      }
+      
+      if ($cors = "true") {
+          add_header 'Access-Control-Allow-Origin' "$http_origin";
+          add_header 'Access-Control-Allow-Credentials' 'true';
+          add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, OPTIONS';
+          add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+          add_header 'Access-Control-Expose-Headers' 'X-Torchlite-Version';
+      }
+
+      if ($corspreflight = "trueoptions") {
+          add_header 'Access-Control-Max-Age' 86400;
+          add_header 'Content-Type' 'text/plain charset=UTF-8';
+          add_header 'Content-Length' 0;
+          return 204;
+      }
+
 spec:
   rules:
     - host: torchlite-api.htrc.illinois.edu
