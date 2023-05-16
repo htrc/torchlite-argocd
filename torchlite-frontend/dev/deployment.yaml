@@ -25,28 +25,14 @@ spec:
               value: development
             - name: JWT_TIMEOUT
               value: '86400'
-            - name: NEXT_PUBLIC_JWT_TIMEOUT
-              value: '86400'
             - name: JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: jwt-secret
-                  key: jwt-secret
-            - name: NEXT_PUBLIC_JWT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: jwt-secret
             - name: NEXTAUTH_URL
               value: https://torchlite-dev.192.17.61.53.nip.io
-            - name: NEXT_PUBLIC_NEXTAUTH_URL
-              value: https://torchlite-dev.192.17.61.53.nip.io
             - name: NEXTAUTH_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: nextauth-secret-key
-                  key: nextauth-secret-key
-            - name: NEXT_PUBLIC_NEXTAUTH_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: nextauth-secret-key
