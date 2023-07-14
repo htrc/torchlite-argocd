@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: torchlite-backend-test-deployment
+spec:
+  selector:
+    matchLabels:
+      app: torchlite-backend-test-app
+  replicas: 1
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: torchlite-backend-test-app
+    spec:
+      containers:
+        - name: torchlite-backend-test
+          image: ghcr.io/htrc/torchlite-backend:purge
+          ports:
+            - containerPort: 8000
+          env:
+            - name: ENV
+              value: test
+            - name: TORCHLITE_CONFIG
+              value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/test/config/config.yaml
+          livenessProbe:
+            httpGet:
+              path: /health/liveness
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health/readiness
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
