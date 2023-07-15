@@ -23,6 +23,13 @@ spec:
               value: test
             - name: TORCHLITE_CONFIG
               value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/test/config/config.yaml
+            - name: DB_HOST
+              value: redis-master.torchlite.svc.cluster.local
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis
+                  key: redis-password
           livenessProbe:
             httpGet:
               path: /health/liveness
