@@ -1,3 +1,4 @@
 /argocd-*.yaml
 *-secret.yaml
 secrets.yaml
+secrets/

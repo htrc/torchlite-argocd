@@ -15,21 +15,33 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-test
-          image: ghcr.io/htrc/torchlite-backend:purge-ffcac85
+          image: ghcr.io/htrc/torchlite-backend:new-backend
           ports:
             - containerPort: 8000
           env:
             - name: ENV
               value: test
-            - name: TORCHLITE_CONFIG
-              value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/test/config/config.yaml
-            - name: DB_HOST
-              value: redis-master.torchlite.svc.cluster.local
-            - name: DB_PASSWORD
+            - name: KEYCLOAK_REALM
+              value: https://idp.192.17.61.53.sslip.io/realms/htrc
+            - name: TORCHLITE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: redis
-                  key: redis-password
+                  name: keycloak-torchlite-client
+                  key: torchlite-client-id
+            - name: TORCHLITE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-torchlite-client
+                  key: torchlite-client-secret
+            - name: MONGODB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-atlas
+                  key: atlas-url
+            - name: AUTH_LEEWAY_SECONDS
+              value: 60
+            - name: FEATURED_WORKSETS_URL
+              value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/test/config/config.yaml
           livenessProbe:
             httpGet:
               path: /health/liveness
