@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: torchlite-frontend-test-deployment
+spec:
+  selector:
+    matchLabels:
+      app: torchlite-frontend-test-app
+  replicas: 1
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: torchlite-frontend-test-app
+    spec:
+      containers:
+        - name: torchlite-frontend-test
+          image: ghcr.io/htrc/torchlite-frontend:new-backend
+          ports:
+            - containerPort: 3000
+          env:
+            - name: ENV
+              value: test
+            - name: NODE_ENV
+              value: development
+            - name: KEYCLOAK_ISSUER_BASE_URL
+              value: https://idp.192.17.61.53.sslip.io/realms/htrc
+            - name: KEYCLOAK_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-torchlite-client
+                  key: torchlite-client-id
+            - name: KEYCLOAK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-torchlite-client
+                  key: torchlite-client-secret
+            - name: NEXTAUTH_URL
+              value: https://torchlite-test.192.17.61.53.nip.io
+            - name: NEXTAUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nextauth
+                  key: nextauth-secret
+            - name: NEXT_PUBLIC_BASE_API_URI
+              value: https://torchlite-test-api.192.17.61.53.nip.io
+            - name: REDIS_HOST
+              value: redis-master.torchlite.svc.cluster.local
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis
+                  key: redis-password
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
