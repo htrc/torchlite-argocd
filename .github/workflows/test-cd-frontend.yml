@@ -1,0 +1,22 @@
+name: Repository Dispatch
+
+on:
+  repository_dispatch:
+    types: [test_commit_frontend]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Set test frontend deployment image
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Update image version
+      uses: mikefarah/yq@v4.33.3
+      with:
+        cmd: yq -i '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' torchlite-frontend/test/deployment.yaml
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: ${{ github.event.client_payload.commit_msg }}
