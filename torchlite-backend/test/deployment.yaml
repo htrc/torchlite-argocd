@@ -39,7 +39,7 @@ spec:
                   name: mongo-atlas
                   key: atlas-url
             - name: AUTH_LEEWAY_SECONDS
-              value: 60
+              value: "60"
             - name: FEATURED_WORKSETS_URL
               value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/test/config/config.yaml
           livenessProbe:
