@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: torchlite-backend-test-app
-  replicas: 1
+  replicas: 2
   revisionHistoryLimit: 2
   template:
     metadata:
