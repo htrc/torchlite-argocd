@@ -15,7 +15,7 @@ metadata:
     # nginx.ingress.kubernetes.io/enable-cors: "true"
 
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      if ($http_origin = "https://torchlite-dev.192.17.61.53.nip.io") {
+      if ($http_origin = "https://torchlite-test.192.17.61.53.nip.io") {
           set $cors "true";
       }
       if ($http_origin ~* ^https://torchlite-[^.]+\.vercel\.app$) {
