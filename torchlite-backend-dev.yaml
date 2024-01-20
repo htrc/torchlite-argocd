@@ -11,7 +11,7 @@ spec:
 
   source:
     repoURL: https://github.com/htrc/torchlite-argocd.git
-    targetRevision: HEAD
+    targetRevision: main
     path: torchlite-backend/dev
   destination: 
     server: https://kubernetes.default.svc

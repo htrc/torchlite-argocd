@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: torchlite-frontend-test-deployment
+  name: torchlite-frontend-stage-deployment
 spec:
   selector:
     matchLabels:
-      app: torchlite-frontend-test-app
+      app: torchlite-frontend-stage-app
   replicas: 1
   revisionHistoryLimit: 2
   template:
     metadata:
       labels:
-        app: torchlite-frontend-test-app
+        app: torchlite-frontend-stage-app
     spec:
       containers:
-        - name: torchlite-frontend-test
-          image: ghcr.io/htrc/torchlite-frontend:new-backend-71ddf4c
+        - name: torchlite-frontend-stage
+          image: ghcr.io/htrc/torchlite-frontend:develop
           ports:
             - containerPort: 3000
           env:
             - name: ENV
-              value: test
+              value: stage
             - name: NODE_ENV
               value: development
             - name: KEYCLOAK_ISSUER_BASE_URL
@@ -36,14 +36,14 @@ spec:
                   name: keycloak-torchlite-client
                   key: torchlite-client-secret
             - name: NEXTAUTH_URL
-              value: https://torchlite-test.192.17.61.53.nip.io
+              value: https://torchlite-stage.htrc.illinois.edu
             - name: NEXTAUTH_SECRET
               valueFrom:
                 secretKeyRef:
                   name: nextauth
                   key: nextauth-secret
             - name: NEXT_PUBLIC_BASE_API_URI
-              value: https://torchlite-test-api.192.17.61.53.nip.io
+              value: https://torchlite-stage-api.htrc.illinois.edu
             - name: REDIS_HOST
               value: redis-master.torchlite.svc.cluster.local
             - name: REDIS_PASSWORD
@@ -53,3 +53,4 @@ spec:
                   key: redis-password
       imagePullSecrets:
         - name: dockerconfigjson-github-com
+

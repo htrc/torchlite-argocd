@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: torchlite-backend-test-ingress
+  name: torchlite-backend-stage-ingress
   annotations:
     #kubernetes.io/ingress.class: public
     #nginx.ingress.kubernetes.io/rewrite-target: /
@@ -15,7 +15,7 @@ metadata:
     # nginx.ingress.kubernetes.io/enable-cors: "true"
 
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      if ($http_origin = "https://torchlite-test.192.17.61.53.nip.io") {
+      if ($http_origin = "https://torchlite-stage.htrc.illinois.edu") {
           set $cors "true";
       }
       if ($http_origin ~* ^https://torchlite-[^.]+\.vercel\.app$) {
@@ -48,17 +48,18 @@ metadata:
 
 spec:
   rules:
-    - host: torchlite-test-api.192.17.61.53.nip.io
+    - host: torchlite-stage-api.htrc.illinois.edu
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: torchlite-backend-test-service
+                name: torchlite-backend-stage-service
                 port:
                   number: 8000
   tls:
     - hosts:
-      - torchlite-test-api.192.17.61.53.nip.io
-      secretName: torchlite-backend-test-ingress-cert
+      - torchlite-stage-api.htrc.illinois.edu
+      secretName: torchlite-backend-stage-ingress-cert
+
