@@ -4,7 +4,7 @@ metadata:
   name: torchlite-frontend-prod-service
 spec:
   selector:
-    app: torchlite-frontenv-prod-app
+    app: torchlite-frontend-prod-app
   ports:
     - port: 3000
       protocol: TCP
