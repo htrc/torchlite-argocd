@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-prod
-          image: ghcr.io/htrc/torchlite-frontend:develop
+          image: ghcr.io/htrc/torchlite-frontend:develop-141bdd1
           ports:
             - containerPort: 3000
           env:
@@ -53,4 +53,3 @@ spec:
                   key: redis-password
       imagePullSecrets:
         - name: dockerconfigjson-github-com
-
