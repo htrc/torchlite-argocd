@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: torchlite-backend-test-deployment
+  name: torchlite-backend-stage-deployment
 spec:
   selector:
     matchLabels:
-      app: torchlite-backend-test-app
+      app: torchlite-backend-stage-app
   replicas: 2
   revisionHistoryLimit: 2
   template:
     metadata:
       labels:
-        app: torchlite-backend-test-app
+        app: torchlite-backend-stage-app
     spec:
       containers:
-        - name: torchlite-backend-test
-          image: ghcr.io/htrc/torchlite-backend:new-backend-7be03b0
+        - name: torchlite-backend-stage
+          image: ghcr.io/htrc/torchlite-backend:develop
           ports:
             - containerPort: 8000
           env:
             - name: ENV
-              value: test
+              value: stage
             - name: KEYCLOAK_REALM
               value: https://idp.192.17.61.53.sslip.io/realms/htrc
             - name: TORCHLITE_CLIENT_ID
@@ -41,7 +41,7 @@ spec:
             - name: AUTH_LEEWAY_SECONDS
               value: "60"
             - name: FEATURED_WORKSETS_URL
-              value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/test/config/config.yaml
+              value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/stage/config/config.yaml
           livenessProbe:
             httpGet:
               path: /health/liveness
@@ -56,3 +56,4 @@ spec:
             periodSeconds: 3
       imagePullSecrets:
         - name: dockerconfigjson-github-com
+

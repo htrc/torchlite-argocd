@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: torchlite-frontend-test-argocd-app
+  name: torchlite-backend-stage-argocd-app
   namespace: argocd
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.slack: torchlite
@@ -11,11 +11,11 @@ spec:
 
   source:
     repoURL: https://github.com/htrc/torchlite-argocd.git
-    targetRevision: HEAD
-    path: torchlite-frontend/test
+    targetRevision: main
+    path: torchlite-backend/stage
   destination: 
     server: https://kubernetes.default.svc
-    namespace: torchlite-test
+    namespace: torchlite-stage
 
   syncPolicy:
     syncOptions:
