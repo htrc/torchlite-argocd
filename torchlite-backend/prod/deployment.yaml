@@ -7,21 +7,40 @@ spec:
     matchLabels:
       app: torchlite-backend-prod-app
   replicas: 2
-  revisionHistoryLimit: 5
+  revisionHistoryLimit: 2
   template:
     metadata:
       labels:
         app: torchlite-backend-prod-app
     spec:
       containers:
-        - name: torchlite-backend-prod-app
-          image: ghcr.io/htrc/torchlite-backend:latest
+        - name: torchlite-backend-prod
+          image: ghcr.io/htrc/torchlite-backend:develop
           ports:
             - containerPort: 8000
           env:
             - name: ENV
               value: prod
-            - name: TORCHLITE_CONFIG
+            - name: KEYCLOAK_REALM
+              value: https://idp.192.17.61.53.sslip.io/realms/htrc
+            - name: TORCHLITE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-torchlite-client
+                  key: torchlite-client-id
+            - name: TORCHLITE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-torchlite-client
+                  key: torchlite-client-secret
+            - name: MONGODB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-atlas
+                  key: atlas-url
+            - name: AUTH_LEEWAY_SECONDS
+              value: "60"
+            - name: FEATURED_WORKSETS_URL
               value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/prod/config/config.yaml
           livenessProbe:
             httpGet:
@@ -37,3 +56,4 @@ spec:
             periodSeconds: 3
       imagePullSecrets:
         - name: dockerconfigjson-github-com
+

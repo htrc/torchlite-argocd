@@ -7,7 +7,7 @@ spec:
     matchLabels:
       app: torchlite-frontend-prod-app
   replicas: 1
-  revisionHistoryLimit: 5
+  revisionHistoryLimit: 2
   template:
     metadata:
       labels:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-prod
-          image: ghcr.io/htrc/torchlite-frontend:latest
+          image: ghcr.io/htrc/torchlite-frontend:develop
           ports:
             - containerPort: 3000
           env:
@@ -23,21 +23,34 @@ spec:
               value: prod
             - name: NODE_ENV
               value: production
-            - name: JWT_TIMEOUT
-              value: '86400'
-            - name: JWT_SECRET
+            - name: KEYCLOAK_ISSUER_BASE_URL
+              value: https://idp.192.17.61.53.sslip.io/realms/htrc
+            - name: KEYCLOAK_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: jwt-secret
-                  key: jwt-secret
+                  name: keycloak-torchlite-client
+                  key: torchlite-client-id
+            - name: KEYCLOAK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-torchlite-client
+                  key: torchlite-client-secret
             - name: NEXTAUTH_URL
               value: https://torchlite.htrc.illinois.edu
-            - name: NEXTAUTH_SECRET_KEY
+            - name: NEXTAUTH_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: nextauth-secret-key
-                  key: nextauth-secret-key
+                  name: nextauth
+                  key: nextauth-secret
             - name: NEXT_PUBLIC_BASE_API_URI
               value: https://torchlite-api.htrc.illinois.edu
+            - name: REDIS_HOST
+              value: redis-master.torchlite.svc.cluster.local
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis
+                  key: redis-password
       imagePullSecrets:
         - name: dockerconfigjson-github-com
+
