@@ -2,7 +2,8 @@ name: Repository Dispatch
 
 on:
   repository_dispatch:
-    types: [dev_commit_backend]
+    types:
+      - dev_commit_backend
 
 permissions:
   contents: write

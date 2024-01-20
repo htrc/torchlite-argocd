@@ -2,7 +2,9 @@ name: Repository Dispatch
 
 on:
   repository_dispatch:
-    types: [prod_commit_frontend]
+    types: 
+      - release_commit_frontend
+      - prod_commit_frontend
 
 permissions:
   contents: write
