@@ -14,8 +14,8 @@ spec:
         app: torchlite-backend-prod-app
     spec:
       containers:
-        - name: torchlite-backend-prod
-          image: ghcr.io/htrc/torchlite-backend:develop
+        - name: torchlite-backend-prod-app
+          image: ghcr.io/htrc/torchlite-backend:develop-1f80394
           ports:
             - containerPort: 8000
           env:
