@@ -22,7 +22,7 @@ spec:
             - name: ENV
               value: stage
             - name: KEYCLOAK_REALM
-              value: https://idp.192.17.61.53.sslip.io/realms/htrc
+              value: https://idp.htrc.illinois.edu/realms/htrc
             - name: TORCHLITE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
@@ -36,8 +36,8 @@ spec:
             - name: MONGODB_URL
               valueFrom:
                 secretKeyRef:
-                  name: mongo-atlas
-                  key: atlas-url
+                  name: torchlite-mongo
+                  key: torchlite-mongo-url
             - name: AUTH_LEEWAY_SECONDS
               value: "60"
             - name: FEATURED_WORKSETS_URL
