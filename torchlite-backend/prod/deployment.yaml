@@ -22,7 +22,7 @@ spec:
             - name: ENV
               value: prod
             - name: KEYCLOAK_REALM
-              value: https://idp.htrc.illinois.edu/realms/htrc
+              value: https://login.analytics.hathitrust.org/realms/10000202
             - name: TORCHLITE_CLIENT_ID
               valueFrom:
                 secretKeyRef:

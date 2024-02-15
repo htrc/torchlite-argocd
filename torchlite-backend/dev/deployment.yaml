@@ -22,7 +22,7 @@ spec:
             - name: ENV
               value: dev
             - name: KEYCLOAK_REALM
-              value: https://idp.htrc.illinois.edu/realms/htrc
+              value: https://idp.dev.htrc.indiana.edu/realms/10000102
             - name: TORCHLITE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
