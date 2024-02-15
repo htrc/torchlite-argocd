@@ -5,7 +5,7 @@ metadata:
   annotations:
     #kubernetes.io/ingress.class: public
     #nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/cluster-issuer: buypass
+    cert-manager.io/cluster-issuer: letsencrypt
     # nginx.ingress.kubernetes.io/cors-allow-headers: "*"
     # nginx.ingress.kubernetes.io/cors-allow-methods: "OPTIONS, GET, PUT, POST"
     # nginx.ingress.kubernetes.io/cors-allow-origin: "https://torchlite-dev.192.17.61.53.nip.io, https://torchlite-*.vercel.app, http://localhost:8081"
