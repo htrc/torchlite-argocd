@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-dev
-          image: ghcr.io/htrc/torchlite-backend:add-tokens-support-71c43db
+          image: ghcr.io/htrc/torchlite-backend:dependabot-pip-cryptography-42.0.4-8da44b4
           ports:
             - containerPort: 8000
           env:
