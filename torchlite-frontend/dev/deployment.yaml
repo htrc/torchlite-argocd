@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-dev
-          image: ghcr.io/htrc/torchlite-frontend:hotfix-be61194
+          image: ghcr.io/htrc/torchlite-frontend:dependabot-npm_and_yarn-next-auth-4.24.5-f0fc92a
           ports:
             - containerPort: 3000
           env:
