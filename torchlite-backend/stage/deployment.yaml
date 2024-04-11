@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-stage
-          image: ghcr.io/htrc/torchlite-backend:develop-edad62d
+          image: ghcr.io/htrc/torchlite-backend:develop-d3c50aa
           ports:
             - containerPort: 8000
           env:
