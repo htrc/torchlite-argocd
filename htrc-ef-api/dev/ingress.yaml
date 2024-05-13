@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ef-api-dev-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+    - host: ef-api-dev.htrc.illinois.edu
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ef-api-dev-service
+                port:
+                  number: 9000
+  tls:
+    - hosts:
+      - ef-api-dev.htrc.illinois.edu
+      secretName: ef-api-dev-ingress-cert
+
