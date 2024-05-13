@@ -15,7 +15,7 @@ spec:
     path: htrc-ef-api/stage
   destination: 
     server: https://kubernetes.default.svc
-    namespace: torchlite-stage
+    namespace: ef-api
 
   syncPolicy:
     syncOptions:

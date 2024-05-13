@@ -15,7 +15,7 @@ spec:
     path: htrc-ef-api/dev
   destination: 
     server: https://kubernetes.default.svc
-    namespace: torchlite-dev
+    namespace: ef-api
 
   syncPolicy:
     syncOptions:

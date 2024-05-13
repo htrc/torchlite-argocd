@@ -24,12 +24,12 @@ spec:
             - name: EFAPI_MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: ef-api-secrets
+                  name: ef-api-secrets-dev
                   key: mongo-url
             - name: EFAPI_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: ef-api-secrets
+                  name: ef-api-secrets-dev
                   key: secret-key
           livenessProbe:
             httpGet:
