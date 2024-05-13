@@ -38,6 +38,8 @@ spec:
                 secretKeyRef:
                   name: torchlite-mongo
                   key: torchlite-mongo-url
+            - name: EF_API_URL
+              value: http://ef-api-dev-service.ef-api.svc.cluster.local:9000
             - name: AUTH_LEEWAY_SECONDS
               value: "60"
             - name: FEATURED_WORKSETS_URL
