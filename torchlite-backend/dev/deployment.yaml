@@ -39,7 +39,7 @@ spec:
                   name: torchlite-mongo
                   key: torchlite-mongo-url
             - name: EF_API_URL
-              value: http://ef-api-dev-service.ef-api.svc.cluster.local:9000
+              value: https://data.htrc.illinois.edu/ef-api
             - name: AUTH_LEEWAY_SECONDS
               value: "60"
             - name: FEATURED_WORKSETS_URL
