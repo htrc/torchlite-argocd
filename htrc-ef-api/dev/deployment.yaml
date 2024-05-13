@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ef-api-dev
-          image: ghcr.io/htrc/htrc-ef-api:develop
+          image: ghcr.io/htrc/htrc-ef-api:develop-79cd201
           ports:
             - containerPort: 9000
           env:
