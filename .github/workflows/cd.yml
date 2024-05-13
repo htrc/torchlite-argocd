@@ -32,4 +32,4 @@ jobs:
         cmd: yq -i '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' ${{ github.event.client_payload.repository }}/stage/deployment.yaml
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: ${{ format('[{0}]: {1}', github.event.client_payload.ref, github.event.client_payload.commit_msg) }}
+        commit_message: "${{ format('[{0}]: {1}', github.event.client_payload.ref, github.event.client_payload.commit_msg) }}"
