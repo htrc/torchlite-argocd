@@ -30,6 +30,13 @@ jobs:
       uses: mikefarah/yq@v4.44.1
       with:
         cmd: yq -i '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' ${{ github.event.client_payload.repository }}/stage/deployment.yaml
-    - uses: stefanzweifel/git-auto-commit-action@v5
+    - name: Set commit message
+      uses: stefanzweifel/git-auto-commit-action@v5
+      if: github.event.client_payload.environment == ''
       with:
         commit_message: "${{ format('[{0}]: {1}', github.event.client_payload.ref, github.event.client_payload.commit_msg) }}"
+    - name: Set commit message
+      uses: stefanzweifel/git-auto-commit-action@v5
+      if: github.event.client_payload.environment != ''
+      with:
+        commit_message: "${{ format('[{0}]: Manual deployment triggered by {1}', github.event.client_payload.ref, github.event.client_payload.actor) }}"
