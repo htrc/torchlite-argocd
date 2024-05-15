@@ -39,4 +39,4 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       if: github.event.client_payload.environment != ''
       with:
-        commit_message: "${{ format('[{0}]: Manual deployment triggered by {1}', github.event.client_payload.ref, github.event.client_payload.actor) }}"
+        commit_message: "${{ format('[{0}]: Manual deployment triggered by @{1}', github.event.client_payload.ref, github.event.client_payload.actor) }}"
