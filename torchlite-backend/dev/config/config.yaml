@@ -1,13 +1,18 @@
 featured_worksets:
-  - name: Comparative Literature Workset
-    id: 6408a63a30000067055ce2e9
-    numVolumes: 927
+  - name: Native-authored Workset Sample
+    id: 640e74be300000d90b5ce31b
+    numVolumes: 10
     description:
-             A list of works authored by non-Native Americans
-             in HathiTrust on the similar subjects as the
-             Native-authored workset during similar time
-             period with similar language representation
+      10 volume sample from the list of works authored by Native Americans in HathiTrust
     author: SCWAReD
+    isPublic: true
+
+  - name: Toni Morrison 10
+    id: 66477bae2600005807132b25
+    numVolumes: 10
+    description:
+      10 novels written by Toni Morrison
+    author: HTRC
     isPublic: true
 
   - name: The Black Fantastic Workset
@@ -21,15 +26,12 @@ featured_worksets:
     author: SCWAReD
     isPublic: true
 
-  - name: History of Black Writers Workset
-    id: 6407a1ec300000a4045ce2e7
-    numVolumes: 2166
+  - name: Dune by Herbert
+    id: 66477e0b2600006a07132b28
+    numVolumes: 6
     description:
-             Volumes found in HathiTrust written by African-American
-             authors, as identified by the University of Kansas\'s
-             Project on the History of Black Writing, released as part
-             of the SCWAReD project
-    author: SCWAReD
+      Dune and its 5 sequels written by original author Frank Herbert
+    author: HTRC
     isPublic: true
 
   - name: History of Black Writers Workset Sample
@@ -41,4 +43,28 @@ featured_worksets:
              University of Kansas\'s Project on the History of Black
              Writing, released as part of the SCWAReD project
     author: SCWAReD
+    isPublic: true
+
+  - name: USA Presidential Papers
+    id: 66477ada2600004a07132b23
+    numVolumes: 779
+    description:
+      Collections of the Papers of the US Presidents over time, Hoover to Obama
+    author: HTRC
+    isPublic: true
+
+  - name: Norton Poetry 5th Ed
+    id: 664777412600002707132b1b
+    numVolumes: 1
+    description:
+      The Norton Anthology of Poetry, 5th edition (2005)
+    author: HTRC
+    isPublic: true
+
+  - name: Einstein Relativity
+    id: 66477c912600006007132b27
+    numVolumes: 1
+    description:
+      Albert Einstein's "Relativity The Special and General Theory"
+    author: HTRC
     isPublic: true
