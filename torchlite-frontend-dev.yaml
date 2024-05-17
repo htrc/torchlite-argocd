@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: torchlite-frontend-dev-argocd-app
   namespace: argocd
+  labels:
+    env: dev
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.slack: torchlite
     notifications.argoproj.io/subscribe.on-health-degraded.slack: torchlite
