@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: torchlite-efapi-stage-deployment
+spec:
+  selector:
+    matchLabels:
+      app: torchlite-efapi-stage-app
+  replicas: 2
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: torchlite-efapi-stage-app
+    spec:
+      containers:
+        - name: torchlite-efapi-stage
+          image: ghcr.io/htrc/htrc-torchlite-efapi:develop
+          ports:
+            - containerPort: 9000
+          env:
+            - name: ENV
+              value: stage
+            - name: TORCHLITE_EFAPI_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: torchlite-efapi-secrets-stage
+                  key: mongo-url
+            - name: TORCHLITE_EFAPI_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: torchlite-efapi-secrets-stage
+                  key: secret-key
+          livenessProbe:
+            httpGet:
+              path: /health/liveness
+              port: 9000
+            initialDelaySeconds: 3
+            periodSeconds: 10
+            timeoutSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health/readiness
+              port: 9000
+            initialDelaySeconds: 3
+            periodSeconds: 10
+            timeoutSeconds: 3
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com

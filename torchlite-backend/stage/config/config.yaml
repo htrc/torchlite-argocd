@@ -1,12 +1,4 @@
 featured_worksets:
-  - name: Native-authored Workset
-    id: 6408a5e930000067055ce2e8
-    numVolumes: 919
-    description:
-         A list of works authored by Native Americans in HathiTrust
-    author: SCWAReD
-    isPublic: true
-
   - name: Comparative Literature Workset
     id: 6408a63a30000067055ce2e9
     numVolumes: 927

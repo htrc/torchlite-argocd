@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-stage
-          image: ghcr.io/htrc/torchlite-backend:develop-fad2b73
+          image: ghcr.io/htrc/torchlite-backend:develop
           ports:
             - containerPort: 8000
           env:
@@ -38,6 +38,8 @@ spec:
                 secretKeyRef:
                   name: torchlite-mongo
                   key: torchlite-mongo-url
+            - name: EF_API_URL
+              value: http://torchlite-efapi-stage-service.torchlite-stage.svc.cluster.local:9000
             - name: AUTH_LEEWAY_SECONDS
               value: "60"
             - name: FEATURED_WORKSETS_URL
