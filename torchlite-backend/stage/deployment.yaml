@@ -26,18 +26,18 @@ spec:
             - name: TORCHLITE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-torchlite-client
-                  key: torchlite-client-id
+                  name: torchlite-backend-secrets-stage
+                  key: keycloak-client-id
             - name: TORCHLITE_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-torchlite-client
-                  key: torchlite-client-secret
+                  name: torchlite-backend-secrets-stage
+                  key: keycloak-client-secret
             - name: MONGODB_URL
               valueFrom:
                 secretKeyRef:
-                  name: torchlite-mongo
-                  key: torchlite-mongo-url
+                  name: torchlite-backend-secrets-stage
+                  key: mongo-url
             - name: EF_API_URL
               value: http://torchlite-efapi-stage-service.torchlite-stage.svc.cluster.local:9000
             - name: AUTH_LEEWAY_SECONDS
