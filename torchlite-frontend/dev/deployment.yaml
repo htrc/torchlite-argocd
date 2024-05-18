@@ -28,19 +28,19 @@ spec:
             - name: KEYCLOAK_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-torchlite-client
+                  name: torchlite-frontend-secrets-dev
                   key: torchlite-client-id
             - name: KEYCLOAK_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-torchlite-client
+                  name: torchlite-frontend-secrets-dev
                   key: torchlite-client-secret
             - name: NEXTAUTH_URL
               value: https://torchlite-dev.htrc.illinois.edu
             - name: NEXTAUTH_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: nextauth
+                  name: torchlite-frontend-secrets-dev
                   key: nextauth-secret
             - name: NEXT_PUBLIC_BASE_API_URI
               value: https://torchlite-dev-api.htrc.illinois.edu
@@ -49,7 +49,7 @@ spec:
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: redis
+                  name: torchlite-frontend-secrets-dev
                   key: redis-password
       imagePullSecrets:
         - name: dockerconfigjson-github-com
