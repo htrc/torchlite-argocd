@@ -27,12 +27,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: torchlite-backend-secrets-stage
-                  key: keycloak-client-id
+                  key: torchlite-client-id
             - name: TORCHLITE_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: torchlite-backend-secrets-stage
-                  key: keycloak-client-secret
+                  key: torchlite-client-secret
             - name: MONGODB_URL
               valueFrom:
                 secretKeyRef:
