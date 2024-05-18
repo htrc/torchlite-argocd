@@ -1,5 +1,4 @@
-
-lapiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: torchlite-backend-dev-deployment
