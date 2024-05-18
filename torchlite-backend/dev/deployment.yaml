@@ -1,4 +1,5 @@
-apiVersion: apps/v1
+
+lapiVersion: apps/v1
 kind: Deployment
 metadata:
   name: torchlite-backend-dev-deployment
@@ -26,18 +27,18 @@ spec:
             - name: TORCHLITE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-torchlite-client
+                  name: torchlite-backend-secrets-dev
                   key: torchlite-client-id
             - name: TORCHLITE_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-torchlite-client
+                  name: torchlite-backend-secrets-dev
                   key: torchlite-client-secret
             - name: MONGODB_URL
               valueFrom:
                 secretKeyRef:
-                  name: torchlite-mongo
-                  key: torchlite-mongo-url
+                  name: torchlite-backend-secrets-dev
+                  key: mongo-url
             - name: EF_API_URL
               value: https://data.htrc.illinois.edu/ef-api
             - name: AUTH_LEEWAY_SECONDS
