@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-dev
-          image: ghcr.io/htrc/torchlite-frontend:Poojadevelopmentbranch-7629f08
+          image: ghcr.io/htrc/torchlite-frontend:Poojadevelopmentbranch-45dbcb2
           ports:
             - containerPort: 3000
           env:
