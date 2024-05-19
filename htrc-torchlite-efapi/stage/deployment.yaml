@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-efapi-stage
-          image: ghcr.io/htrc/htrc-torchlite-efapi:stage-8b47470
+          image: ghcr.io/htrc/htrc-torchlite-efapi:release-4f1be3a
           ports:
             - containerPort: 9000
           env:
