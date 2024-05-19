@@ -45,14 +45,6 @@ featured_worksets:
     author: SCWAReD
     isPublic: true
 
-  - name: USA Presidential Papers
-    id: 66477ada2600004a07132b23
-    numVolumes: 779
-    description:
-      Collections of the Papers of the US Presidents over time, Hoover to Obama
-    author: HTRC
-    isPublic: true
-
   - name: Norton Poetry 5th Ed
     id: 664777412600002707132b1b
     numVolumes: 1
