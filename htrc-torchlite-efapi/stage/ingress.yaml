@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: torchlite-efapi-stage-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+    - host: ef-api-stage.htrc.illinois.edu
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: torchlite-efapi-stage-service
+                port:
+                  number: 9000
+  tls:
+    - hosts:
+      - ef-api-stage.htrc.illinois.edu
+      secretName: torchlite-efapi-stage-ingress-cert
+
