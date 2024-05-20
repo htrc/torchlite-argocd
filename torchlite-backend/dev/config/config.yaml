@@ -26,6 +26,14 @@ featured_worksets:
     author: SCWAReD
     isPublic: true
 
+  - name: USA Presidential Papers
+    id: 66477ada2600004a07132b23
+    numVolumes: 653
+    description:
+      Collections of the Papers of the US Presidents over time, Hoover to Obama
+    author: HTRC
+    isPublic: true
+
   - name: Dune by Herbert
     id: 66477e0b2600006a07132b28
     numVolumes: 6
