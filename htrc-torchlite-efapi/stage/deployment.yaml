@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-efapi-stage
-          image: ghcr.io/htrc/htrc-torchlite-efapi:8-update-stage-ef-api-endpoint-related-to-aggregated-collection-e6d5abf
+          image: ghcr.io/htrc/htrc-torchlite-efapi:develop-2b017f3
           ports:
             - containerPort: 9000
           env:
