@@ -44,6 +44,10 @@ spec:
               value: "60"
             - name: FEATURED_WORKSETS_URL
               value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/stage/config/config.yaml
+            - name: FEATURED_WORKSET_USER
+              value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
+            - name: REGISTRY_API_URL
+              value: https://analytics.dev.htrc.indiana.edu
           livenessProbe:
             httpGet:
               path: /health/liveness
