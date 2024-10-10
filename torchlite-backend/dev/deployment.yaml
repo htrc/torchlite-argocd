@@ -54,7 +54,7 @@ spec:
                   name: torchlite-frontend-secrets-dev
                   key: redis-password
             - name: REDIS_URL
-              value:  redis://${REDIS_PASSWORD}@redis-master.torchlite-dev.svc.cluster.local
+              value: redis://${REDIS_PASSWORD}@redis-master.torchlite-dev.svc.cluster.local
             - name: ENABLE_CACHE
               value: "true"
             - name: CACHE_EXPIRE
