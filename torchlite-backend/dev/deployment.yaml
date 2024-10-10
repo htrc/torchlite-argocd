@@ -48,6 +48,17 @@ spec:
               value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
             - name: REGISTRY_API_URL
               value: https://analytics.dev.htrc.indiana.edu
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: torchlite-frontend-secrets-dev
+                  key: redis-password
+            - name: REDIS_URL
+              value:  redis://${REDIS_PASSWORD}@redis-master.torchlite-dev.svc.cluster.local
+            - name: ENABLE_CACHE
+              value: "true"
+            - name: CACHE_EXPIRE
+              value: "60"
           livenessProbe:
             httpGet:
               path: /health/liveness
