@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-dev
-          image: ghcr.io/htrc/torchlite-backend:dependabot-github_actions-docker-build-push-action-6-162b346
+          image: ghcr.io/htrc/torchlite-backend:dependabot-github_actions-docker-build-push-action-6-579fa1f
           ports:
             - containerPort: 8000
           env:
