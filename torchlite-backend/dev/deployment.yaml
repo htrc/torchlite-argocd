@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-dev
-          image: ghcr.io/htrc/torchlite-backend:fastapi-update-041a064
+          image: ghcr.io/htrc/torchlite-backend:fastapi-update-ca26ad7
           ports:
             - containerPort: 8000
           env:
