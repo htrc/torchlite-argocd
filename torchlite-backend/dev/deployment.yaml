@@ -47,7 +47,7 @@ spec:
             - name: FEATURED_WORKSET_USER
               value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
             - name: REGISTRY_API_URL
-              value: https://analytics.dev.htrc.indiana.edu
+              value: https://analytics.dev.htrc.indiana.edu/devregistry
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
