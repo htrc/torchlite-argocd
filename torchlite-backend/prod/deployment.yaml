@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-prod-app
-          image: ghcr.io/htrc/torchlite-backend:develop-1f80394
+          image: ghcr.io/htrc/torchlite-backend:stage-8fdc18a
           ports:
             - containerPort: 8000
           env:
@@ -56,4 +56,3 @@ spec:
             periodSeconds: 3
       imagePullSecrets:
         - name: dockerconfigjson-github-com
-
