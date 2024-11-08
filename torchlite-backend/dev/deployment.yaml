@@ -58,7 +58,7 @@ spec:
             - name: ENABLE_CACHE
               value: "true"
             - name: CACHE_EXPIRE
-              value: "60"
+              value: "3600"
           livenessProbe:
             httpGet:
               path: /health/liveness
