@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-backend-dev
-          image: ghcr.io/htrc/torchlite-backend:applystopwordds-b2d0a1a
+          image: ghcr.io/htrc/torchlite-backend:applystopwordds-36d7962
           ports:
             - containerPort: 8000
           env:
