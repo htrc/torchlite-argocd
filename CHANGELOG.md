@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - This CHANGELOG file.
+- Kubernetes manifest files for running EF-API in the production instance. [#72](https://github.com/htrc/torchlite-app/issues/72)
 
 ### Changed
 - Backend cache expiration time in the development instance to 3600 seconds (1 hour). [#7](https://github.com/htrc/torchlite-argocd/issues/7)
-
+- Kubernetes manifest files for running TORCHLITE backend and frontend applications in the production instance. [#73](https://github.com/htrc/torchlite-app/issues/73)
