@@ -38,10 +38,16 @@ spec:
                 secretKeyRef:
                   name: torchlite-mongo
                   key: torchlite-mongo-url
+            - name: EF_API_URL
+              value: http://torchlite-efapi-prod-service.torchlite-prod.svc.cluster.local:9000
             - name: AUTH_LEEWAY_SECONDS
               value: "60"
             - name: FEATURED_WORKSETS_URL
               value: https://raw.githubusercontent.com/htrc/torchlite-argocd/main/torchlite-backend/prod/config/config.yaml
+            - name: FEATURED_WORKSET_USER
+              value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
+            - name: REGISTRY_API_URL
+              value: https://analytics.dev.htrc.indiana.edu
           livenessProbe:
             httpGet:
               path: /health/liveness

@@ -2,3 +2,5 @@
 *-secret.yaml
 secrets.yaml
 secrets/
+
+.idea/
