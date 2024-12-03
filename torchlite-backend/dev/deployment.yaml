@@ -48,6 +48,16 @@ spec:
               value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
             - name: REGISTRY_API_URL
               value: https://analytics.dev.htrc.indiana.edu/devregistry
+            - name: REGISTRY_TLS_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: registryapi-dev-cert
+                  key: tls.crt
+            - name: REGISTRY_TLS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: registryapi-dev-cert
+                  key: tls.key
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
