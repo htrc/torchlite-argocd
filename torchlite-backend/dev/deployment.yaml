@@ -13,11 +13,24 @@ spec:
       labels:
         app: torchlite-backend-dev-app
     spec:
+      volumes:
+        - name: registry-cert
+          secret:
+            secretName: registryapi-dev-cert
+            items:
+              - key: tls.crt
+                path: crt
+              - key: tls.key
+                path: key
       containers:
         - name: torchlite-backend-dev
           image: ghcr.io/htrc/torchlite-backend:develop-e97e94e
           ports:
             - containerPort: 8000
+          volumeMounts:
+            - name: registry-cert
+              mountPath: "/etc/credentials"
+              readOnly: true
           env:
             - name: ENV
               value: dev
@@ -48,16 +61,6 @@ spec:
               value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
             - name: REGISTRY_API_URL
               value: https://registryapi.dev.htrc.indiana.edu
-            - name: REGISTRY_TLS_CERT
-              valueFrom:
-                secretKeyRef:
-                  name: registryapi-dev-cert
-                  key: tls.crt
-            - name: REGISTRY_TLS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: registryapi-dev-cert
-                  key: tls.key
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
