@@ -48,17 +48,30 @@ spec:
               value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
             - name: REGISTRY_API_URL
               value: https://analytics.dev.htrc.indiana.edu
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: torchlite-frontend-secrets-stage
+                  key: redis-password
+            - name: REDIS_HOST
+              value: redis-master.torchlite-stage.svc.cluster.local
+            - name: ENABLE_CACHE
+              value: "true"
+            - name: CACHE_EXPIRE
+              value: "3600"
           livenessProbe:
             httpGet:
               path: /health/liveness
               port: 8000
             initialDelaySeconds: 3
-            periodSeconds: 3
+            periodSeconds: 10
+            timeoutSeconds: 3
           readinessProbe:
             httpGet:
               path: /health/readiness
               port: 8000
             initialDelaySeconds: 3
-            periodSeconds: 3
+            periodSeconds: 10
+            timeoutSeconds: 3
       imagePullSecrets:
         - name: dockerconfigjson-github-com
