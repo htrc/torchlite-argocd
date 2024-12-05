@@ -61,6 +61,10 @@ spec:
               value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
             - name: REGISTRY_API_URL
               value: https://registryapi.dev.htrc.indiana.edu
+            - name: REGISTRY_TLS_CERT_PATH
+              value: /etc/credentials/crt
+            - name: REGISTRY_TLS_KEY_PATH
+              value: /etc/credentials/key
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
