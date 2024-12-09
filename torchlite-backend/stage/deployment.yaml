@@ -13,11 +13,24 @@ spec:
       labels:
         app: torchlite-backend-stage-app
     spec:
+      volumes:
+        - name: registry-cert
+          secret:
+            secretName: registryapi-stage-cert
+            items:
+              - key: tls.crt
+                path: crt
+              - key: tls.key
+                path: key
       containers:
         - name: torchlite-backend-stage
           image: ghcr.io/htrc/torchlite-backend:stage-0b6f27a
           ports:
             - containerPort: 8000
+          volumeMounts:
+            - name: registry-cert
+              mountPath: "/etc/credentials"
+              readOnly: true
           env:
             - name: ENV
               value: stage
@@ -47,7 +60,11 @@ spec:
             - name: FEATURED_WORKSET_USER
               value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
             - name: REGISTRY_API_URL
-              value: https://analytics.dev.htrc.indiana.edu
+              value: https://registryapi.stage.htrc.indiana.edu
+            - name: REGISTRY_TLS_CERT_PATH
+              value: /etc/credentials/crt
+            - name: REGISTRY_TLS_KEY_PATH
+              value: /etc/credentials/key
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
