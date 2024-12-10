@@ -24,7 +24,7 @@ spec:
                 path: key
       containers:
         - name: torchlite-backend-dev
-          image: ghcr.io/htrc/torchlite-backend:mutual-tls-8024a14
+          image: ghcr.io/htrc/torchlite-backend:mutual-tls-50e6cbe
           ports:
             - containerPort: 8000
           volumeMounts:
