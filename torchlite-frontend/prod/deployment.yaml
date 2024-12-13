@@ -45,7 +45,7 @@ spec:
             - name: NEXT_PUBLIC_BASE_API_URI
               value: https://torchlite-api.htrc.illinois.edu
             - name: REDIS_HOST
-              value: redis-master.torchlite.svc.cluster.local
+              value: redis-master.torchlite-prod.svc.cluster.local
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
