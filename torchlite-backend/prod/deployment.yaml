@@ -65,6 +65,17 @@ spec:
               value: /etc/credentials/crt
             - name: REGISTRY_TLS_KEY_PATH
               value: /etc/credentials/key
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis
+                  key: redis-password
+            - name: REDIS_HOST
+              value: redis-master.torchlite-prod.svc.cluster.local
+            - name: ENABLE_CACHE
+              value: "true"
+            - name: CACHE_EXPIRE
+              value: "3600"
           livenessProbe:
             httpGet:
               path: /health/liveness
