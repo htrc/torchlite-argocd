@@ -13,11 +13,24 @@ spec:
       labels:
         app: torchlite-backend-prod-app
     spec:
+      volumes:
+        - name: registry-cert
+          secret:
+            secretName: registryapi-prod-cert
+            items:
+              - key: tls.crt
+                path: crt
+              - key: tls.key
+                path: key
       containers:
         - name: torchlite-backend-prod-app
-          image: ghcr.io/htrc/torchlite-backend:stage-6d0d637
+          image: ghcr.io/htrc/torchlite-backend:main-d65649e
           ports:
             - containerPort: 8000
+          volumeMounts:
+            - name: registry-cert
+              mountPath: "/etc/credentials"
+              readOnly: true
           env:
             - name: ENV
               value: prod
@@ -47,13 +60,29 @@ spec:
             - name: FEATURED_WORKSET_USER
               value: e0ae4638-53f3-400e-8d74-4ebbefe532ad
             - name: REGISTRY_API_URL
-              value: https://analytics.dev.htrc.indiana.edu
+              value: https://registryapi.internal.htrc.indiana.edu
+            - name: REGISTRY_TLS_CERT_PATH
+              value: /etc/credentials/crt
+            - name: REGISTRY_TLS_KEY_PATH
+              value: /etc/credentials/key
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis
+                  key: redis-password
+            - name: REDIS_HOST
+              value: redis-master.torchlite-prod.svc.cluster.local
+            - name: ENABLE_CACHE
+              value: "true"
+            - name: CACHE_EXPIRE
+              value: "3600"
           livenessProbe:
             httpGet:
               path: /health/liveness
               port: 8000
             initialDelaySeconds: 3
-            periodSeconds: 3
+            periodSeconds: 10
+            timeoutSeconds: 3
           readinessProbe:
             httpGet:
               path: /health/readiness
