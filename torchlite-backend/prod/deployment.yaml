@@ -87,7 +87,8 @@ spec:
             httpGet:
               path: /health/readiness
               port: 8000
-            initialDelaySeconds: 3
-            periodSeconds: 3
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 20
       imagePullSecrets:
         - name: dockerconfigjson-github-com
