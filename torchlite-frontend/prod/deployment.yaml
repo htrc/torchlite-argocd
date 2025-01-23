@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-prod
-          image: ghcr.io/htrc/torchlite-frontend:stage-4edf5a6
+          image: ghcr.io/htrc/torchlite-frontend:google-analytics-8a1ce6b
           ports:
             - containerPort: 3000
           env:
