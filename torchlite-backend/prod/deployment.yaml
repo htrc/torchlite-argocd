@@ -76,6 +76,8 @@ spec:
               value: "true"
             - name: CACHE_EXPIRE
               value: "3600"
+            - name: GOOGLE_ANALYTICS_ID
+              value: "G-XPLYSCJRWG"
           livenessProbe:
             httpGet:
               path: /health/liveness
