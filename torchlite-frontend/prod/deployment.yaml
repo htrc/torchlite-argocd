@@ -52,6 +52,7 @@ spec:
                   name: redis
                   key: redis-password
             - name: GOOGLE_ANALYTICS_ID
+            - name: NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
               value: "G-XPLYSCJRWG"
       imagePullSecrets:
         - name: dockerconfigjson-github-com
