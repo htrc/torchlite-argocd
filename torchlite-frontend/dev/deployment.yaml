@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-dev
-          image: ghcr.io/htrc/torchlite-frontend:develop-d68874d
+          image: ghcr.io/htrc/torchlite-frontend:98-widgets-not-getting-displayed-after-the-user-is-logged-in-for-a-while-6da1679
           ports:
             - containerPort: 3000
           env:
