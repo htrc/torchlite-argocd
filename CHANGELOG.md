@@ -18,7 +18,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Kubernetes manifest files for running TORCHLITE backend and frontend applications in the production instance. [#73](https://github.com/htrc/torchlite-app/issues/73)
 - Update TORCHLITE backend production config to include Redis details and to use main branch and tag. [#25](https://github.com/htrc/torchlite-app/issues/25)
 - Update Torchlite frontend and EF API production configurations to use the latest main branch and commit SHA. [#29](https://github.com/htrc/torchlite-app/issues/29)
-- KeyCloak endpoint URL for dev.
 
 ### Fixed
 - TORCHLITE EF API branch name/sha in the production instance. [#16](https://github.com/htrc/torchlite-argocd/issues/16)
