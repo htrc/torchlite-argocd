@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-dev
-          image: ghcr.io/htrc/torchlite-frontend:develop-a806f97
+          image: ghcr.io/htrc/torchlite-frontend:share-private-worksets-9f9c924
           ports:
             - containerPort: 3000
           env:
