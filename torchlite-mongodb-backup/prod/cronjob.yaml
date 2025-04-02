@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: mongodb-backup
 spec:
-  schedule: "00 04 1 * *" # Runs backup at 4 am on the first of every month
+  schedule: "00 05 * * *" # Runs backup every day at 5:00 AM
   jobTemplate:
     spec:
       template:
@@ -16,9 +16,9 @@ spec:
             - -c
             - |
               # Perform backup
-              mongodump --host=mongodb-svc -u $username -p $password --port=27017 --out=/backup/$(date +\%Y-\%m-\%dT\%H-\%M-\%S)
-              # Remove backups older than 2 months
-              find /backup -type d -mtime +30 -exec rm -rf {} +
+              mongodump --host=mongodb-svc -u torchlite -p $password --port=27017 --out=/backup/$(date +\%Y-\%m-\%dT\%H-\%M-\%S)
+              # Remove backups older than 7 days
+              find /backup -type d -mtime +7 -exec rm -rf {} +
             envFrom:
               - secretRef:
                   name: mongodb-admin-torchlite
@@ -29,4 +29,4 @@ spec:
           volumes:
           - name: backup-storage
             persistentVolumeClaim:
-              claimName: mongodb-backup-dev-pvc
+              claimName: mongodb-backup-prod-pvc
