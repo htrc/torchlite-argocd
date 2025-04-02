@@ -4,7 +4,7 @@ metadata:
   name: mongodb-backup-pv
 spec:
   capacity:
-    storage: 100Gi # 2 times the size of the dev mongodb persistent volume as we will be retaining the most recent 2 backups in the backup volume
+    storage: 100Gi # 2 times the size of the stage mongodb persistent volume as we will be retaining the most recent 2 backups in the backup volume
   accessModes:
     - ReadWriteOnce
   hostPath:
