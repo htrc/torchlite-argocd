@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mongodb-backup
+spec:
+  schedule: "*/5 * * * *" # Runs backup every 5 minutes for testing purposes
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: mongodump
+            image: quay.io/mongodb/mongodb-community-server:6.0.5-ubi8
+            command:
+            - sh
+            - -c
+            - |
+              # Perform backup
+              mongodump --host=mongodb-svc -u $username -p $password --port=27017 --out=/backup/$(date +\%Y-\%m-\%dT\%H-\%M-\%S)
+              # Remove backups older than 2 months
+              find /backup -type d -mtime +30 -exec rm -rf {} +
+            envFrom:
+              - secretRef:
+                  name: mongodb-admin-torchlite
+            volumeMounts:
+            - name: backup-storage
+              mountPath: /backup
+          restartPolicy: OnFailure
+          volumes:
+          - name: backup-storage
+            persistentVolumeClaim:
+              claimName: mongodb-backup-pvc
