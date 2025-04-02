@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: torchlite-mongodb-backup-app
+  name: torchlite-mongodb-backup-dev-argocd-app
   namespace: argocd
   labels:
     env: dev
