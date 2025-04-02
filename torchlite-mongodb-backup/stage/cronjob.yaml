@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: mongodb-backup
 spec:
-  schedule: "00 04 15 * *" # Runs backup at 4 am on the fifteenth day of every month
+  schedule: "*/5 * * * *" # Test stage backup.
   jobTemplate:
     spec:
       template:
