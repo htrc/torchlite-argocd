@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-dev
-          image: ghcr.io/htrc/torchlite-frontend:error-messages-ee0fc63
+          image: ghcr.io/htrc/torchlite-frontend:error-messages-52a7797
           ports:
             - containerPort: 3000
           env:
