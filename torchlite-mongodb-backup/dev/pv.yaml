@@ -10,11 +10,3 @@ spec:
   hostPath:
     path: /data/mongodb-backup
     type: DirectoryOrCreate
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - htt5

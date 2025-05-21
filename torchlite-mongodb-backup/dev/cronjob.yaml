@@ -8,6 +8,15 @@ spec:
     spec:
       template:
         spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                    - htt5
           containers:
           - name: mongodump
             image: quay.io/mongodb/mongodb-community-server:6.0.5-ubi8
