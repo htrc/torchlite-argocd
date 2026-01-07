@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-dev
-          image: ghcr.io/htrc/torchlite-frontend:dependabot-npm_and_yarn-qs-6.14.1-27157a2
+          image: ghcr.io/htrc/torchlite-frontend:develop-0b6c478
           ports:
             - containerPort: 3000
           env:
