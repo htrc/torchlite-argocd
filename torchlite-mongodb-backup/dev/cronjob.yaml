@@ -2,12 +2,17 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: mongodb-backup
+  namespace: torchlite-dev
 spec:
-  schedule: "*/5 * * * *" # Runs backup every 5 minutes for testing
+  schedule: "00 04 1 * *" # Runs backup at 4 am on the first of every month
   jobTemplate:
     spec:
       template:
         spec:
+          securityContext:
+            fsGroup: 999
+            runAsUser: 999
+            runAsGroup: 999
           containers:
           - name: mongodump
             image: quay.io/mongodb/mongodb-community-server:6.0.5-ubi8
