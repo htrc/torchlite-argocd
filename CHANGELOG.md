@@ -24,3 +24,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TORCHLITE EF API branch name/sha in the production instance. [#16](https://github.com/htrc/torchlite-argocd/issues/16)
 - TORCHLITE Frontend branch name/sha in the production instance. [#19](https://github.com/htrc/torchlite-argocd/issues/19)
 - Redis hostname on TORCHLITE Frontend deployment in the production instance. [#26](https://github.com/htrc/torchlite-argocd/issues/19)
+- TORCHLITE EF API branch name/sha in the production deployment.yaml. [#50](https://github.com/htrc/torchlite-argocd/issues/50)
