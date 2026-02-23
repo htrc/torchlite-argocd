@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-efapi-prod
-          image: ghcr.io/htrc/htrc-torchlite-efapi:main-3032432
+          image: ghcr.io/htrc/htrc-torchlite-efapi:develop-3032432
           ports:
             - containerPort: 9000
           env:
