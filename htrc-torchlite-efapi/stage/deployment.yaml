@@ -24,12 +24,12 @@ spec:
             - name: TORCHLITE_EFAPI_MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: torchlite-efapi-secrets-stage
+                  name: torchlite-efapi-secrets-stage-test
                   key: mongo-url
             - name: TORCHLITE_EFAPI_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: torchlite-efapi-secrets-stage
+                  name: torchlite-efapi-secrets-stage-test
                   key: secret-key
           livenessProbe:
             httpGet:
