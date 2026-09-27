@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: torchlite-redis-stage
+  namespace: argocd
+  labels:
+    env: stage
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.slack: torchlite
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: torchlite
+spec:
+  project: default
+
+  sources:
+    - repoURL: https://github.com/htrc/torchlite-argocd.git
+      targetRevision: main
+      ref: values
+    - repoURL: registry-1.docker.io/bitnamicharts
+      chart: redis
+      targetRevision: 19.2.0
+      helm:
+        releaseName: redis
+        valueFiles:
+          - $values/redis/stage/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: torchlite-stage
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=false
+      - RespectIgnoreDifferences=true
+  ignoreDifferences:
+    - group: ""
+      kind: Secret
+      name: redis
+      jsonPointers:
+        - /data
+    - group: apps
+      kind: StatefulSet
+      jsonPointers:
+        - /spec/template/metadata/annotations/checksum~1secret
