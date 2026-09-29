@@ -1,2 +1,8 @@
 operator:
   watchNamespace: '*'
+
+# The MongoDBCommunity CRD in the cluster is newer (controller-gen v0.15.0) than the one
+# bundled in chart 0.9.0 (v0.11.3), because it was overwritten by the operator installed
+# manually in torchlite-prod. Do not let ArgoCD manage (and downgrade) it.
+community-operator-crds:
+  enabled: false
