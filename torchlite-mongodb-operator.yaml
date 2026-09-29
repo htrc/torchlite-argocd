@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: torchlite-mongodb-operator
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.slack: torchlite
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: torchlite
+spec:
+  project: default
+
+  sources:
+    - repoURL: https://github.com/htrc/torchlite-argocd.git
+      targetRevision: main
+      ref: values
+    - repoURL: https://mongodb.github.io/helm-charts
+      chart: community-operator
+      targetRevision: 0.9.0
+      helm:
+        releaseName: community-operator
+        valueFiles:
+          - $values/mongodb-operator/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mongodb
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
