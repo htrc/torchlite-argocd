@@ -1,0 +1,24 @@
+auth:
+  # Existing Secret in the mongodb namespace (keys: mongodb-root-password, mongodb-replica-set-key).
+  # Do not commit credentials here. ArgoCD renders charts without cluster access, so leaving these
+  # unset would generate new random passwords on sync and break authentication.
+  existingSecret: torchlite-mongodb-sharded
+image:
+  # Keep the tag currently running in the cluster. The chart 8.0.7 default (r2) would roll all pods.
+  tag: 7.0.9-debian-12-r0
+configsvr:
+  podAntiAffinityPreset: soft
+  replicaCount: 3
+global:
+  storageClass: microk8s-hostpath
+mongos:
+  podAntiAffinityPreset: soft
+  resourcesPreset: 2xlarge
+shards: 4
+shardsvr:
+  dataNode:
+    podAntiAffinityPreset: ""
+    replicaCount: 2
+    resourcesPreset: 2xlarge
+  persistence:
+    size: 10T

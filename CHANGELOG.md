@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add cron job for setting up mongodb backup in all TORCHLITE instances. [#33](https://github.com/htrc/torchlite-argocd/issues/33)
 - Redis manifest files (Helm chart values) for all instances. [#55](https://github.com/htrc/torchlite-argocd/issues/33)
 - MongoDB community operator Helm values. [#63](https://github.com/htrc/torchlite-argocd/issues/63)
+- Sharded MongoDB instance manifest files (Helm chart values). [#64](https://github.com/htrc/torchlite-argocd/issues/64)
 
 ### Changed
 - Backend cache expiration time in the development instance to 3600 seconds (1 hour). [#7](https://github.com/htrc/torchlite-argocd/issues/7)
