@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: torchlite-frontend-dev
-          image: ghcr.io/htrc/torchlite-frontend:dependabot-github_actions-actions-checkout-7-c559e3c
+          image: ghcr.io/htrc/torchlite-frontend:develop-eb132bd
           ports:
             - containerPort: 3000
           env:
