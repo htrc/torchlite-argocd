@@ -1,0 +1,44 @@
+apiVersion: mongodbcommunity.mongodb.com/v1
+kind: MongoDBCommunity
+metadata:
+  name: mongodb
+  namespace: torchlite-prod
+spec:
+  additionalMongodConfig:
+    storage.wiredTiger.engineConfig.journalCompressor: zlib
+  members: 3
+  security:
+    authentication:
+      ignoreUnknownUsers: true
+      modes:
+      - SCRAM
+  statefulSet:
+    spec:
+      volumeClaimTemplates:
+      - metadata:
+          name: data-volume
+        spec:
+          resources:
+            requests:
+              storage: 100Gi
+  type: ReplicaSet
+  users:
+  - db: admin
+    name: admin
+    passwordSecretRef:
+      name: mongodb-admin-admin
+    roles:
+    - db: admin
+      name: clusterAdmin
+    - db: admin
+      name: userAdminAnyDatabase
+    scramCredentialsSecretName: admin
+  - db: admin
+    name: torchlite
+    passwordSecretRef:
+      name: mongodb-admin-torchlite
+    roles:
+    - db: torchlite
+      name: readWrite
+    scramCredentialsSecretName: torchlite
+  version: 6.0.5
