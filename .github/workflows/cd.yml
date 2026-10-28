@@ -17,17 +17,17 @@ jobs:
     - uses: actions/checkout@v4
     - name: Update image version
       if: github.event.client_payload.environment != ''
-      uses: mikefarah/yq@v4.44.6
+      uses: mikefarah/yq@v4.45.1
       with:
         cmd: yq -i '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' ${{ github.event.client_payload.repository }}/${{ github.event.client_payload.environment }}/deployment.yaml
     - name: Update image version
       if: github.event.client_payload.environment == '' && github.event.client_payload.ref == 'develop'
-      uses: mikefarah/yq@v4.44.6
+      uses: mikefarah/yq@v4.45.1
       with:
         cmd: yq -i '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' ${{ github.event.client_payload.repository }}/dev/deployment.yaml
     - name: Update image version
       if: github.event.client_payload.environment == '' && github.event.client_payload.ref == 'release'
-      uses: mikefarah/yq@v4.44.6
+      uses: mikefarah/yq@v4.45.1
       with:
         cmd: yq -i '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' ${{ github.event.client_payload.repository }}/stage/deployment.yaml
     - name: Set commit message
