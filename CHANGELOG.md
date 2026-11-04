@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MongoDB community operator Helm values. [#63](https://github.com/htrc/torchlite-argocd/issues/63)
 - Sharded MongoDB instance manifest files (Helm chart values). [#64](https://github.com/htrc/torchlite-argocd/issues/64)
 - torchlite-prod MongoDB Community Operator manifests and ArgoCD Application. [#68](https://github.com/htrc/torchlite-argocd/issues/68)
+- Dashboard MongoDBCommunity manifests and ArgoCD Applications for all instances. [#69](https://github.com/htrc/torchlite-argocd/issues/69)
 
 ### Changed
 - Backend cache expiration time in the development instance to 3600 seconds (1 hour). [#7](https://github.com/htrc/torchlite-argocd/issues/7)

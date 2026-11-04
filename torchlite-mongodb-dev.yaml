@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: torchlite-mongodb-dev-argocd-app
+  namespace: argocd
+  labels:
+    env: dev
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.slack: torchlite
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: torchlite
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/htrc/torchlite-argocd.git
+    targetRevision: main
+    path: torchlite-mongodb/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: torchlite-dev
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+  ignoreDifferences:
+  - group: mongodbcommunity.mongodb.com
+    kind: MongoDBCommunity
+    jsonPointers:
+    - /status
