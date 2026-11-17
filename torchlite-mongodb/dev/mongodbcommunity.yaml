@@ -26,7 +26,7 @@ spec:
   - db: admin
     name: admin
     passwordSecretRef:
-      name: admin-user-password
+      name: mongodb-admin-admin
     roles:
     - db: admin
       name: clusterAdmin
@@ -36,7 +36,7 @@ spec:
   - db: admin
     name: torchlite
     passwordSecretRef:
-      name: torchlite-user-password
+      name: mongodb-admin-torchlite
     roles:
     - db: torchlite
       name: readWrite

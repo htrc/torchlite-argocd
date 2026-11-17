@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Torchlite frontend and EF API production configurations to use the latest main branch and commit SHA. [#29](https://github.com/htrc/torchlite-app/issues/29)
 
 ### Fixed
+- Align Dashboard MongoDBCommunity passwordSecretRef in dev and stage to existing mongodb-admin-* Secrets (match prod). [#70](https://github.com/htrc/torchlite-argocd/issues/70)
 - TORCHLITE EF API branch name/sha in the production instance. [#16](https://github.com/htrc/torchlite-argocd/issues/16)
 - TORCHLITE Frontend branch name/sha in the production instance. [#19](https://github.com/htrc/torchlite-argocd/issues/19)
 - Redis hostname on TORCHLITE Frontend deployment in the production instance. [#26](https://github.com/htrc/torchlite-argocd/issues/19)
